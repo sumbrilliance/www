@@ -7,6 +7,16 @@
  */
 class Controller {
 
+
+    function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+
+        if (!method_exists($this, $name)) {
+            throw new \Core\Exception($name.' -->  '.'sorry,not found the method');
+        }
+    }
+
     function __construct()
     {
 //        $this -> load

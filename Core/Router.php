@@ -6,6 +6,7 @@
  * Time: 下午12:01
  */
 require CORE_PATH.'Controller.class.php';    // 必须引用,否则为了找到这个类,会再次调用autoload方法
+require CORE_PATH.'Exception.class.php';
 class Router {
 
 
@@ -46,8 +47,11 @@ class Router {
         }else {
                 $param = array_splice($paths, 3); // 截取掉域名,控制器,函数,剩下作为参数
         }
-
-        $ctr -> $method($param);
+        try {
+            $ctr -> $method($param);
+        } catch (\Core\Exception $e) {
+            echo $e -> getMessage(). "未找到此方法";
+        }
 
     }
 
