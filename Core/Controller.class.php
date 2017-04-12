@@ -5,8 +5,10 @@
  * Date: 2017/3/27
  * Time: 下午2:21
  */
+include CORE_PATH.'View.class.php';
 class Controller {
 
+    private $view = null;
 
     function __call($name, $arguments)
     {
@@ -19,10 +21,19 @@ class Controller {
 
     function __construct()
     {
-//        $this -> load
-
+        $this -> view = new View();
     }
 
+    public function display($name) {
+
+
+        $this ->view -> display($name);
+    }
+
+    public function assign($key, $value) {
+
+        $this->view -> assign($key, $value);
+    }
 
 
 

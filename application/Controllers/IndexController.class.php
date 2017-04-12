@@ -12,8 +12,9 @@ class IndexController extends Controller {
 
     function hello ($arr) {
 
-        echo PHP_BR."get the hello: ".print_r($arr);
-
+//        echo PHP_BR."get the hello: ".print_r($arr);
+        self::assign('content', 'hahahha');
+        self::display(VIEW_PATH.'Index/Hello.html');
     }
 
 }
